@@ -14,7 +14,7 @@ describe('credit card validation', () => {
     page = await browser.newPage();
   });
 
-  jest.setTimeout(10000); // Чтобы Jest дождался окончания теста и не упал раньше времени
+  jest.setTimeout(10000);
 
   test('success submit should add class .valid for correct card logo', async () => {
     await page.goto('http://localhost:9000/');
@@ -48,10 +48,6 @@ describe('credit card validation', () => {
     await submit.click();
 
     await page.waitForSelector('.input.invalid');
-    // await expect(input.value).resolves.toBe('Wrong Card Number');
-
-    /* ??? Как-то можно в тесте е2е прочитать значение в инпуте (в моём случае, 'Wrong Card Number')
-      и сравнить с заранее известным при ошибке валидации? */
   });
 
   afterEach(async () => {
